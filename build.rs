@@ -3,15 +3,13 @@ use std::{env, path::PathBuf};
 pub fn main() {
     let lib_root = env::var("CARGO_MANIFEST_DIR").unwrap();
     let header_path = PathBuf::from(&lib_root).join("te/wrapper.h");
-    let lib_path = PathBuf::from(&lib_root).join("te/lib/aarch64-linux-gnu");
+    // let lib_path = PathBuf::from(&lib_root).join("te/lib/aarch64-linux-gnu");
 
     println!("cargo:rustc-link-lib=transformer_engine");
     println!("cargo:rustc-link-lib=dylib=nvrtc"); // run-time compiler API
     println!("cargo:rustc-link-lib=dylib=cudart"); // CUDA run-time (required by nvrtc)
-    // optional but harmless (many TE kernels need them anyway):
     println!("cargo:rustc-link-lib=dylib=cublas");
     println!("cargo:rustc-link-lib=dylib=cublasLt");
-    println!("cargo:rustc-link-search={}", lib_path.to_str().unwrap());
 
     let bindings = bindgen::Builder::default()
         .header(header_path.to_str().unwrap())

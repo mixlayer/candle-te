@@ -4,7 +4,8 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+candle = { package = "candle-core", version = "0.9.1", features = ["cuda"] }
+half = "2.6.0"
 
 [build-dependencies]
 bindgen = "0.72.0"
-candle = { package = "candle-core", version = "0.9.1", features = ["cuda"] }
