@@ -1,5 +1,5 @@
 [package]
-name = "modeld-te"
+name = "candle-te"
 version = "0.1.0"
 edition = "2024"
 
@@ -7,3 +7,4 @@ edition = "2024"
 
 [build-dependencies]
 bindgen = "0.72.0"
+candle = { package = "candle-core", version = "0.9.1", features = ["cuda"] }
